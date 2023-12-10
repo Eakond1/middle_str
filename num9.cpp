@@ -5,29 +5,11 @@ using namespace std;
 string itc_Cezar(string str, int k) {
     string result = "";
     for (int i = 0; i < itc_len(str); i++) {
-            if (str[i] >= 'A' && str[i] <= 'Z') {
-                char simvol = str[i] + k;
-    if (simvol > 'Z') {
-            simvol = 'A' + (simvol - 'Z' - 1);
+            int index = (str[i] - 'a' + k) % 26;
+            if (index < 0) {
+                    index += 26;
+                }
+            result += char(index + 'a');
     }
-    else if (simvol < 'A') {
-            simvol = 'Z' - ('A' - simvol - 1);
-    }
-    result += simvol;
-    }
-     else if (str[i] >= 'a' && str[i] <= 'z') {
-            char simvol = str[i] + k;
-     if (simvol > 'z') {
-            simvol = 'a' + (simvol - 'z' - 1);
-     }
-     else if (simvol < 'a') {
-         simvol = 'z' - ('a' - simvol - 1);
-         }
-         result += simvol;
-         }
-          else {
-                result += str[i];
-          }
-          }
     return result;
 }

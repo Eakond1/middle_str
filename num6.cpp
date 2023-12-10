@@ -3,31 +3,34 @@
 #include <string>
 using namespace std;
 string itc_maxCharWord(string str) {
-    int len = 0, max_len = 0;
-    string word = "", max_word = "";
-    int word_count = 0;
-    for (int i = 0; i < itc_len(str); i++) {
-        if (str[i] != ' ') {
+    int max_length = 0;
+    string max_word;
+    string word = "";
+    int counter = 0;
+    for (int i = 0; i < str.length(); i++) {
+        if (str[i] != ' '     &&    i != str.length() - 1) {
             word += str[i];
-            len++;
+            counter ++;
+        }
+        else if (i == str.length() - 1&&str[i] != ' ') {
+            word += str[i];
+            counter ++;
+            if (word.length() > max_length) {
+                max_length = word.length();
+                max_word = word;
+                counter++;
+            }
         }
         else {
-            if (len > max_len) {
-                max_len = len;
+            if (word.length() > max_length) {
+                max_length = word.length();
                 max_word = word;
+                counter++;
             }
             word = "";
-            len = 0;
-            word_count++;
         }
     }
-    if (len > max_len) {
-        max_len = len;
-        max_word = word;
-    }
-    word_count++;
-    if (word_count < 2) {
-    return "error";
-}
+    if(counter <2)
+        return "error";
     return max_word;
 }

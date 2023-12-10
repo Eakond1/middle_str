@@ -5,7 +5,7 @@ using namespace std;
 string itc_rmFreeSpace(string str){
     string result = "";
     bool space = false;
-    for (int i = 0; i < str.length(); i++) {
+    for (int i = 0; i < itc_len(str); i++) {
             if (str[i] == ' ' && !space) {
                 result += str[i];
     space = true;
@@ -15,9 +15,9 @@ string itc_rmFreeSpace(string str){
      space = false;
      }
      }
-     if (result[result.length() - 1] == ' ') {
+     if (result[itc_len(result) - 1] == ' ') {
             string temp = "";
-     for (int i = 0; i < result.length() - 1; i++) {
+     for (int i = 0; i < itc_len(result) - 1; i++) {
             temp += result[i];
      }
      result = temp;

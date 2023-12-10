@@ -19,4 +19,5 @@ if(c >= 'A' && c<= 'Z'){
     c = 'a' + alnum;
     return c;
 }
+return c;
 }
