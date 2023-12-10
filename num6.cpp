@@ -7,30 +7,29 @@ string itc_maxCharWord(string str) {
     string max_word;
     string word = "";
     int counter = 0;
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] != ' '     &&    i != str.length() - 1) {
+    for (int i = 0; i < itc_len(str); i++) {
+        if (str[i] != ' ' && i != itc_len(str) - 1) {
             word += str[i];
-            counter ++;
         }
-        else if (i == str.length() - 1&&str[i] != ' ') {
+        else if (i == itc_len(str) - 1 && str[i] != ' ') {
             word += str[i];
-            counter ++;
-            if (word.length() > max_length) {
-                max_length = word.length();
+            if (itc_len(word) > max_length) {
+                max_length = itc_len(word);
                 max_word = word;
-                counter++;
             }
         }
         else {
-            if (word.length() > max_length) {
-                max_length = word.length();
+            if (itc_len(word) > max_length) {
+                max_length = itc_len(word);
                 max_word = word;
-                counter++;
             }
             word = "";
+            counter ++;
         }
-    }
-    if(counter <2)
+        }
+
+    if(counter <1){
         return "error";
-    return max_word;
+    }
+        return max_word;
 }
