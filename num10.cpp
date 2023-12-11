@@ -15,7 +15,7 @@ string itc_rmFreeSpace(string str){
             space = false;
      }
      }
-     if (result[itc_len(result) - 1] == ' ') {
+     if (result[itc_len(result)] == ' ') {
             string temp = "";
      for (int i = 0; i < itc_len(result) - 1; i++) {
             temp += result[i];

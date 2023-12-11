@@ -3,35 +3,22 @@
 #include <string>
 using namespace std;
 string itc_Cezar(string str, int k) {
-    string result = "";
-    for(int i =0; i< str.length(); i++){
-                    if (str[i] >= 'A'  &&      str[i] <= 'Z') {
-            str[i] += (k % 26);
-            if (str[i] < 'A')
-                str[i] += 26;
-            result += str[i];
-        }
-         else if (str[i] >= 'a'   &&     str[i] <= 'z') {
-            str[i] += (k % 26);
-            if (str[i] < 'a')
-                str[i] += 26;
-            result += str[i];
-         }
-         else if (str[i] >= 'À'  &&      str[i] <= 'ß') {
-            str[i] += (k % 33);
-            if (str[i] < 'À')
-                str[i] += 33;
-            result += str[i];
-         }
-         else if (str[i] >= 'à'   &&     str[i] <= 'ÿ') {
-            str[i] += (k % 33);
-            if (str[i] < 'à')
-                str[i] += 33;
-            result += str[i];
-         }
-         else {
-            result += str[i];
-        }
+  string result = "";
+  for(int i =0; i< itc_len(str); i++) {
+    if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A'&& str[i] <= 'Z')) {
+      char base;
+      if (str[i] >= 'A' &&str[i] <= 'Z') {
+        base = 'A';
+      }
+       else {
+        base = 'a';
+      }
+      result += (char)((((str[i] - base + k) % 26 + 26) % 26) + base);
     }
-    return result;
+    else {
+      result += str[i];
+    }
+  }
+  return result;
 }
+
